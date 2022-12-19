@@ -1,0 +1,80 @@
+<div class="demo-button-container">
+  <button mat-fab extended color="warn" class="demo-button" routerLink="/add">
+    <mat-icon>add</mat-icon>
+    Add Item
+  </button>
+  <div class="search">
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput placeholder="Search" #key />
+      <button
+        matSuffix
+        mat-icon-button
+        color="primary"
+        (click)="onSearch(key.value)"
+        class="example-icon"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{ element.maSv }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Tên">
+    <th mat-header-cell *matHeaderCellDef>Tên sinh viên</th>
+    <td mat-cell *matCellDef="let element">{{ element.tenSv }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Điểm">
+    <th mat-header-cell *matHeaderCellDef>Điểm</th>
+    <td mat-cell *matCellDef="let element">{{ element.diem }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Đã đóng hp">
+    <th mat-header-cell *matHeaderCellDef>Đã đóng hp</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.daDongHocPhi ? "Đã đóng" : "Chưa đóng" }}
+    </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Lớp">
+    <th mat-header-cell *matHeaderCellDef>Lớp</th>
+    <td mat-cell *matCellDef="let element">{{ element.tenLop }}</td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-mini-fab
+        color="primary"
+        matTooltip="Edit this row"
+        aria-label="Example icon button with a menu icon"
+        (click)="onEdit(element.maSv)"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      &nbsp;&nbsp;
+      <button
+        mat-mini-fab
+        color="warn"
+        matTooltip="Delete this row"
+        aria-label="Example icon button with a menu icon"
+        (click)="onDelete(element.maSv)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

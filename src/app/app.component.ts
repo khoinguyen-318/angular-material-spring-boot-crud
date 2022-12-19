@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'App-frontend';
+  key:string = "";
+  onSearch(key:string){
+    console.log(key);
+  }
 }

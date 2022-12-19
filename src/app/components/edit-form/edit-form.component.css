@@ -1,0 +1,20 @@
+.container{
+  padding: 10% 0 0 0;
+  margin: auto;
+  width: 40%;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.example-button-row{
+  text-align: center;
+}
+.example-button-row button{
+  margin: 0 15px;
+}

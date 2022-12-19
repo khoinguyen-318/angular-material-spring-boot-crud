@@ -1,0 +1,40 @@
+<div class="container">
+  <form class="example-form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <input matInput formControlName="maSv" hidden/>
+    <mat-form-field class="example-full-width">
+      <mat-label>Tên sinh viên</mat-label>
+      <input matInput placeholder="Nguyễn Ngọc Khôi" formControlName="tenSv"/>
+      <mat-error *ngIf="formGroup.controls.tenSv.hasError('required')">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Điểm</mat-label>
+      <input matInput placeholder="10" type="number" formControlName="diem"/>
+      <mat-error *ngIf="formGroup.controls.diem.hasError('min') ||
+      formGroup.controls.diem.hasError('max')">
+        Please input number > 0 and < 10
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Tên lớp</mat-label>
+      <input matInput placeholder="Dh9c6" formControlName="tenLop"/>
+      <mat-error *ngIf="formGroup.controls.tenLop.hasError('required')">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label>Favorite food</mat-label>
+      <input matInput placeholder="Ex. Pizza" />
+    </mat-form-field> -->
+    <mat-radio-group formControlName="daDongHocPhi" class="example-radio-group" aria-labelledby="example-radio-group-label">
+      <label id="example-radio-group-label">Đã đóng học phí?</label>
+      <mat-radio-button [value]="true">Đã đóng</mat-radio-button>
+      <mat-radio-button [value]="false">Chưa đóng</mat-radio-button>
+    </mat-radio-group>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary" [disabled]="!formGroup.valid" type="submit">Submit</button>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>
+    </div>
+  </form>
+</div>
